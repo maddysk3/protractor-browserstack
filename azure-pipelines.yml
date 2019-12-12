@@ -8,10 +8,9 @@ trigger:
 
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: BrowserStackConfig@0
+  inputs:
+    BrowserStackServiceEndPoint: 'Browserstack Connection'
+- script: npm install
+- script: npm run single
+- task: BrowserStackResults@0
